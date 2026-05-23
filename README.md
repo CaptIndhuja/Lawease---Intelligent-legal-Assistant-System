@@ -1,25 +1,28 @@
-# Lawease---Intelligent-legal-Assistant-System
-Designed and developed an AI-powered legal assistance system to summarize, translate, and answer queries from legal documents. Integrated LLMs using FastAPI to deliver accurate, user-friendly responses, enhancing accessibility and efficiency in understanding complex legal information.
+LawEase - Full Project Scaffold\n\nThis scaffold contains a frontend (Vite + React + Tailwind) and backend (FastAPI) with chat, translate, document upload/extraction (PDF/DOCX), Ollama integration for LLM, export as PDF, summaries, theme toggle and responsive UI.\n\nSee frontend/ and backend/ folders for details.\n
 
-LawEase is an AI-powered legal assistance platform designed to simplify complex legal procedures and documents for common users. It provides a conversational interface where users can ask legal questions, upload documents, and receive clear, simplified explanations while maintaining ethical response boundaries.
 
-Unlike traditional legal AI systems that rely on generic cloud-based models, LawEase uses a locally hosted LLM via Ollama, enabling offline execution, enhanced privacy, and controlled responses. This approach improves reliability by restricting non-legal outputs and ensuring sensitive legal data remains on the user’s system.
+uvicorn main:app --reload --host 127.0.0.1 --port 8000 
 
-The frontend is built using React.js and Tailwind CSS for a responsive and intuitive user experience. The backend is developed with FastAPI and Python, handling API requests and AI interactions efficiently. Legal documents are processed using pdfminer and python-docx, enabling structured text extraction and analysis.
+import React, { useEffect, useState } from 'react';
+export default function RightPanel(){ const [doc,setDoc]=useState(null); useEffect(()=>{ function onDoc(e){ setDoc(e.detail); } window.addEventListener('lawease:document', onDoc); return ()=>window.removeEventListener('lawease:document', onDoc); },[]); return (<div className='card p-4'><h3 className='font-bold'>Document Preview</h3>{doc? <div className='mt-2 text-sm whitespace-pre-wrap' style={{maxHeight:300,overflow:'auto'}}>{doc.text}</div> : <div className='text-sm text-gray-400 mt-2'>No document loaded</div>}<div className='mt-4 text-sm text-gray-400'>Tips: Upload PDF or DOCX from the left panel. Extracted text appears here.</div></div>); }
 
-Currently, the system focuses on offline processing with non-persistent data handling. Advanced features such as authentication, encryption, and access control are planned as future enhancements.
 
-#FOR BACKEND
+text-lg font-bold text-purple-300
+
+
+### Backend
+```
 cd backend
 python -m venv venv
-source venv/bin/activate    # On Windows: venv\Scripts\activate
+source venv/bin/activate    # on Windows use: venv\\Scripts\\activate
 pip install -r requirements.txt
 ./start.sh
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
+uvicorn main:app --reload --host 127.0.0.1 --port 8000 
+```
 
-#FOR FRONTEND
+### Frontend
+```
 cd frontend
 npm install
 npm run dev
-
-
+```

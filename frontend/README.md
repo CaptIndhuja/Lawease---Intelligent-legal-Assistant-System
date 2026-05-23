@@ -1,0 +1,1 @@
+Frontend (Vite + React + Tailwind)\n\nInstall & Run:\ncd frontend\nnpm install\nnpm run dev\n\nNotes:\n- Ensure backend runs at http://127.0.0.1:8000\n- This scaffold includes translation UI wired to /translate and chat to /chat\n
