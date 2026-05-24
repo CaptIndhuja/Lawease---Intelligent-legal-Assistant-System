@@ -48,7 +48,6 @@ The system provides fast, accessible, and user-friendly legal assistance through
 ### Development Tools
 - Git & GitHub
 - VS Code
-- Postman
 
 ---
 ## Installation
